@@ -32,6 +32,10 @@ export class MainPersonalComponent implements OnInit {
     }
 
   ngOnInit(): void {
+   this.getAllPersonal();
+  }
+
+  getAllPersonal(){
     this.personalService.findAll().subscribe((response)=>{
       this.personal = new MatTableDataSource<Personal>(response);
       this.personalService.loading = false;
@@ -59,8 +63,7 @@ const modalRef= this.dialog.open(AddPersonalComponent,{
   disableClose:true 
 });
 modalRef.afterClosed().subscribe((result:any) =>{
-  console.log('Modal CLose');
-  
+ this.getAllPersonal();
 })
 }
 

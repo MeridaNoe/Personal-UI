@@ -21,6 +21,11 @@ export class PersonalService {
   return this.http.get<Personal[]>(`${APP_URL}api/personal/`)
  }
 
+ finAllPositions(){
+  this.loading = true;
+  return this.http.get<any>(`${APP_URL}api/position/`)
+ }
+
 save(personal:Personal){
   this.loading = true
   return this.http.post<Personal>(`${APP_URL} api/personal/`, personal)
